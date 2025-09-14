@@ -3,7 +3,7 @@
 
 # Reticulum LoRa Standalone Packet Analyzer and Broadcast Repeater
 
-A comprehensive standalone packet analyzer (from serial output monitor) and broadcast repeater (read: announces repeater) for Reticulum mesh networks using Heltec WiFi LoRa 32 V3 hardware.
+A comprehensive standalone packet analyzer (from serial output monitor) and transparent broadcast repeater (read: announces repeater) for Reticulum mesh networks using Heltec WiFi LoRa 32 V3 hardware.
 
 ## Features
 
