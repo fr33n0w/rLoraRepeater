@@ -1,4 +1,4 @@
-# rLoraRepeater
+# rLoraRepeater v1.0
 
 
 # Reticulum LoRa Standalone Packet Analyzer and Broadcast Repeater
