@@ -248,9 +248,52 @@ To add features:
 - Fixed LoRa parameters (no dynamic configuration, edit the sketch to modify LoRa settings!)
 - Memory constraints limit routing table capabilities
 
+The limits of transparent/dumb repeaters in Reticulum networks are significant and stem from the protocol's design as an intelligent mesh system rather than simple RF amplification:
+
+Protocol-Level Limitations:
+
+Bidirectional Communication Failure:
+
+    Link establishment requires handshake timing that repeaters disrupt
+    Acknowledgment packets must follow specific timing windows
+    Session keys and sequence numbers become desynchronized
+
+Path Discovery Issues:
+
+    Reticulum uses cryptographic path proofs that can't be blindly repeated
+    Hop count management requires protocol awareness
+    Route metrics become inaccurate without proper path calculation
+
+Flooding and Loops:
+
+    Without routing intelligence, announces can create broadcast storms
+    No understanding of network topology leads to inefficient propagation
+    Duplicate detection relies on protocol-level sequence tracking
+
+Security Implications:
+
+    Cannot validate packet authenticity or integrity
+    May propagate malicious or corrupted packets
+    Bypasses Reticulum's built-in security mechanisms
+
+What Actually Works:
+
+    One-way announcements (network discovery)
+    Broadcast packets without response requirements
+    Simple range extension for topology awareness
+
+Why This Matters: Reticulum was designed assuming intelligent nodes that understand routing, cryptography, and session management. Dumb repeaters break these assumptions, announces working but messaging failing.
+
+The Fundamental Problem: Transparent repeaters treat Reticulum like a simple radio protocol when it's actually a sophisticated networking stack. This mismatch creates the limitations you can observe with a firmware like this.
+
+The transparent or dumb repeater succeeds where Reticulum behavior resembles broadcast radio, but fails where it requires network intelligence.
+
+# THIS IS AN EXPERIMENTAL PROJECT AND MAY BE REMAIN AS IT IS, IF YOU CAN, CONTRIBUTE TO IT IMPLEMENTING RETICULUM STACK TRANSPORT INSIDE THE FIRMWARE.
+
 ## License
 
-[Specify your preferred license - MIT, GPL, etc.]
+[MIT]
+
 
 ## Contributing
 
