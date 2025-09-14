@@ -51,6 +51,8 @@ For complete mesh routing capabilities, a full Reticulum transport node implemen
 
 ## Installation
 
+## METHOD A, USING ARDUINO IDE:
+
 ### 1. Install Arduino IDE and ESP32 Support
 
 1. Download and install [Arduino IDE](https://www.arduino.cc/en/software)
@@ -80,6 +82,56 @@ Open Arduino IDE Library Manager (Tools → Manage Libraries) and install:
 2. Select correct COM/Serial port in Tools → Port
 3. Open the firmware sketch
 4. Click Upload button or Ctrl+U
+
+## METHOD B, FLASHING PREMADE FIRMWARE WITH ESP32FLASHTOOL
+
+### Using Precompiled Binary (No Arduino IDE Required)
+For users who want to flash the firmware without setting up the development environment:
+
+### Download the precompiled firmware:
+
+Go to the Releases page
+
+Download rLoraRepeater_v1.0.bin
+
+
+### Install ESP32 Flash Tool:
+
+Download ESP32 Flash Download Tool from Espressif
+
+Or install esptool: pip install esptool
+
+
+### Flash using ESP32 Flash Download Tool:
+
+Connect your Heltec V3 via USB
+
+Open ESP32 Flash Download Tool
+
+Select "ESP32" and "Develop" mode
+
+Add the firmware file:
+
+File path: Browse to rLoraRepeater_v1.0.bin
+
+Address: 0x10000
+
+
+Select your COM port and set baud rate to 115200
+
+Click "START" to flash
+
+
+### Flash using esptool (Command Line):
+
+(Replace COM3 with your actual port)
+
+esptool.py --chip esp32 --port COM3 --baud 115200 write_flash 0x10000 rLoraRepeater_v1.0.bin
+
+
+
+-----
+
 
 ## Configuration
 
